@@ -1,5 +1,47 @@
+body {
+  background: linear-gradient(to right, #813838, #333);
+}
+
+h1 {
+  color: #d1a2a2;
+  font-weight: bolder;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+button {
+  background-color: #234567;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+button:hover {
+  background-color: #345678;
+  cursor: pointer;
+}
+button:active {
+  background-color: #123456;
+}
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  border: 1px solid #234567;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20vh;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  background-color:  #c72a12;
+  color: #333;
 }
 
 .App-logo {

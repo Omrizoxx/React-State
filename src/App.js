@@ -1,46 +1,63 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      person:{
-        name:"Omar Oyow",
-        bio:"I am a software engineer with a passion for building web applications",
-        imgSrc:"https://via.placeholder.com/150",
-        Profession: "Software Engineer",
+      person: {
+        fullName: "Omar Oyow",
+        bio: "A passionate software developer with 15 years of experience in React and Node.js.",
+        imgSrc: "",
+        profession: "Software Engineer"
       },
-      showBio: false,
-      MountedTime:0,
+      shows: false,
+      mountTime: new Date(),
+      timeSinceMount: 0
     };
-    this.Timer = null;
   }
 
+  toggleShow = () => {
+    this.setState(prevState => ({
+      shows: !prevState.shows
+    }));
+  };
+
   componentDidMount() {
-    this.Timer = setInterval(() => {
-      this.setState({MountedTime: this.state.MountedTime + 1});
+    this.interval = setInterval(() => {
+      const now = new Date();
+      const seconds = Math.floor((now - this.state.mountTime) / 1000);
+      this.setState({ timeSinceMount: seconds });
     }, 1000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.Timer);
-  }
-
-  toggleBio = () => {
-    this.setState({showBio: !this.state.showBio});
+    clearInterval(this.interval);
   }
 
   render() {
+    const { person, shows, timeSinceMount } = this.state;
+
     return (
       <div className="App">
-        <h1>Hello World</h1>
-        <p>This is a simple React app</p>
-        <button onClick={this.toggleBio}>Toggle Bio</button>
-        {this.state.showBio && <p>{this.state.person.bio}</p>}
-        <p>Mounted Time: {this.state.MountedTime} seconds</p>
+        <h1>Welcome to Biometric App</h1>
+        <p>this app collects biometrics and stores them in the database</p>
+        <button onClick={this.toggleShow}>
+          {shows ? 'Hide Profile' : 'Show Profile'}
+        </button>
+        
+        {shows && (
+          <div className="profile">
+            <img src={person.imgSrc} alt={person.fullName} />
+            <h2>{person.fullName}</h2>
+            <h3>{person.profession}</h3>
+            <p>{person.bio}</p>
+          </div>
+        )}
+        
+        <p>Component mounted {timeSinceMount} seconds ago.</p>
       </div>
-    )
+    );
   }
 }
 
