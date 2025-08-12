@@ -8,7 +8,7 @@ class App extends Component {
       person: {
         fullName: "Omar Oyow",
         bio: "A passionate software developer with 15 years of experience in React and Node.js.",
-        imgSrc: "",
+        imgSrc: "https://wallpaperbat.com/img/124408-wallpaper-ronaldo-juventus-cristiano-ronaldo-juventus-cristano.jpg",
         profession: "Software Engineer"
       },
       shows: false,
